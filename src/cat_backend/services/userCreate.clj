@@ -26,10 +26,10 @@
  (rand-int 99999999))
 
 (defn generate-user []
-  (def user (user-random))
-  (def pass (pass-random))
-  (db/create-user user pass)
-  (generate-string {:user user :pass pass}))
+  (let [user (user-random)
+        pass (pass-random)]
+    (db/create-user user pass)
+    (generate-string {:user user :pass pass})))
 
 (defn user-login [user pass]
   (if (= user (get (db/search-user user) :agent))

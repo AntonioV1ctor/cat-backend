@@ -13,7 +13,10 @@
   [ring/ring-defaults "0.7.0"]
   [buddy/buddy-sign "3.5.351"]
   [ring-cors "0.1.13"]]
-
+                  
+  :plugins [[jonase/eastwood "1.4.3"]
+            [lein-kibit "0.1.11"]
+            [lein-cloverage "1.2.4"]]
 
   :main ^:skip-aot cat_backend.core
   :target-path "target/%s"

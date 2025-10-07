@@ -19,9 +19,9 @@
 )
 
 (defn -main [& args]
-  (def my-server (hk-server/run-server (wrap-cors (wrap-defaults app api-defaults) 
+  (let [my-server (hk-server/run-server (wrap-cors (wrap-defaults app api-defaults) 
   :access-control-allow-origin [#".*"]
   :access-control-allow-methods [:get :put :post :delete]) 
-  {:port 5000}))
+  {:port 5000})]
   (generate-initial-admin)
-  (println "Starting server in port 5000."))
+  (println "Starting server in port 5000.")))
