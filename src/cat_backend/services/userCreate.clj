@@ -23,7 +23,7 @@
  (str (rand-nth primary-name) (rand-nth second-name)"#"(rand-int 9999)))
 
 (defn pass-random []
- (rand-int 99999999))
+  (rand-int 99999999))
 
 (defn generate-user []
   (let [user (user-random)

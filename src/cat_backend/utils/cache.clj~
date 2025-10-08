@@ -1,0 +1,8 @@
+(ns cat_backend.utils.cache
+  :require [clojure.java.io :as io])
+
+(defn cache-creator [content name-file]
+  (try (spit  name-file content :append true )
+       (catch Exception e (str "An error occurred while trying to create a cache file:"(.getMessage e)))))
+
+(cache-creator "Olá Mundo\n" "cache.txt")

@@ -2,9 +2,9 @@
 (:require
 [cat_backend.services.userCreate :refer :all]
 [cat_backend.services.jwt :refer :all]
-    [cheshire.core :refer :all]
-    [compojure.route :as route]
-    [compojure.core :refer :all]))
+           [cheshire.core :refer :all]
+           [compojure.route :as route]
+           [compojure.core :refer :all]))
 
 (defn generate-user-route []
 (GET "/api/v1/generate-user" []
@@ -17,7 +17,7 @@
     (user-login user pass)))
 
 (defn jwt-verification-route []
-  (GET "/api/v1/protected" request
+(GET "/api/v1/protected" request
   (if-let [token (get-token-from-request request)]
     (if-let [payload (verify-token token)]
       {:status 200

@@ -11,15 +11,3 @@ CREATE TABLE mensagens (
         ON DELETE CASCADE
         ON UPDATE CASCADE
 );
-
--- INSERT INTO users (agent, pass)
--- VALUES ('admin', '1234'), ('ac1db1t3', '83292119');
-
--- INSERT INTO mensagens (user_id, msg)
--- VALUES (1, 'Hi, do you want hack the FBI?'),
-    --    (1, 'Because i need THIS!'),
-    --    (2, 'Omagaa');
-       
--- SELECT * FROM users WHERE agent = "ac1db1t3";
-
--- SELECT * FROM users

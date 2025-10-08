@@ -58,6 +58,28 @@ Após a inicialização, acesse a aplicação em:
 
 ---
 
+## Run Tests
+
+- Unit tests
+```bash
+lein test
+```
+
+- Coverage tests
+```bash
+lein cloverage
+```
+
+- Bug identifier
+```bash
+lein eastwood
+```
+
+- Better Practices
+```bash
+lein kibit
+```
+---
 ## License
 
 Copyright © 2025
