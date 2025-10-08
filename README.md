@@ -48,12 +48,12 @@ Após a inicialização, acesse a aplicação em:
 
 ---
 
-## Releases
+## Fulture Releases
 
 * Adicionar conexão HTTPS [**False**]
 * Modificar a estrutura para o chat ser um WebSocket [**False**]
 * Adicionar proxy reverso com **Nginx** [**False**]
-* Integrar sistema de análise de qualidade de código (**SonarQube**) [**False**]
+* Adicionar sistema de cache [**False**]
 * Reorganizar a estrutura do código, separando por responsabilidades e funções [**False**]
 
 ---
