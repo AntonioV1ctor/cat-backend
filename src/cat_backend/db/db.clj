@@ -12,23 +12,49 @@
 )
 
 (defn search-user [name]
-  (first(j/query mysql-db
-                 ["SELECT * FROM users WHERE agent = ?" name])))
+  (try
+    (first(j/query mysql-db
+              ["SELECT * FROM users WHERE agent = ?" name]))
+  (catch Exception e
+    (str "Unable to search for user"))))
+
 
 (defn create-user [name pass]
-  (j/execute! mysql-db
-              ["INSERT INTO users (agent, pass) VALUES (?, ?)" name pass]))
+  (try
+    (j/execute! mysql-db
+              ["INSERT INTO users (agent, pass) VALUES (?, ?)" name pass])
+  (catch Exception e
+    (str "Unable to create a user"))))
+
+
+(defn exclude-user [name]
+  (try
+    (j/execute! mysql-db
+              ["DELETE FROM Customers WHERE CustomerName='?'" name])
+    (catch Exception e
+    (str "Unable to remove user"))))
+
 
 (defn send-message [authorID msg]
-  (j/execute! mysql-db
-              ["INSERT INTO mensagens (user_id, msg) VALUES (?,?)" authorID msg]))
+  (try
+    (j/execute! mysql-db
+                ["INSERT INTO mensagens (user_id, msg) VALUES (?,?)" authorID msg])
+  (catch Exception e
+    (str "Unable to save message"))))
+
 
 (defn load-all-messages []
-  (j/query mysql-db
-           ["SELECT msg FROM mensagens"]))
+  (try
+    (j/query mysql-db
+           ["SELECT msg FROM mensagens"])
+  (catch Exception e
+    (str "Unable to load all messages"))))
+
 
 (defn load-messages-byID [position]
-  (get(nth (j/query mysql-db
-              ["SELECT msg FROM mensagens"])position):msg))
-
+  (try
+    (get(nth (j/query mysql-db
+                      ["SELECT msg FROM mensagens"])position):msg)
+    (catch Exception e
+      (str "Unable to load message by ID"))))
 
