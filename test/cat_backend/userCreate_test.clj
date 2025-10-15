@@ -5,7 +5,7 @@
             [cat_backend.core :refer :all]))
 
 
-;; Unit Tests
+;; caminho feliz
 (deftest user-random-test
   (testing "Testando a função de criação de usuário aleatório"
     (testing "user-random"
@@ -16,8 +16,18 @@
     (testing "pass-random"
       (is (> (count (str(pass-random)))5)))))
 
+(deftest generate-user-format-test
+  (testing "Testando o formato do JSON gerado"
+    (testing "generate-user"
+      (is (.contains (generate-user) "user")))))
 
-;;(deftest user-login-test
-;;  (testing "Testando a função de login do usuário"
-;;    (testing "user-login"
-;;      (is (user-login )))))
+;; caminho triste
+(deftest user-login-fail-test
+  (testing "Testando a função de login com usuário inexistente"
+    (testing "user-login"
+      (is (= (:status (user-login "inexistente" "123")) 401)))))
+
+(deftest user-login-wrong-pass-test
+  (testing "Testando a função de login com senha errada"
+    (testing "user-login"
+      (is (= (:status (user-login "test" "senhaerrada")) 401)))))
