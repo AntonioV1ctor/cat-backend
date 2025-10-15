@@ -3,14 +3,20 @@
    [cat_backend.db.db :refer :all]
    [clojure.test :refer :all]))
 
-(if (= (get(search-user "test"):agent) "test")
-  "test user are created"(create-user "test" "a4Bh5kingcrimson"))
 
+(defn db-fixure [test-fn]
+  (create-user "test" "TEST1234kgcrk")
+  (test-fn)
+  (exclude-user "test")
+  (exclude-user "test2"))
+
+(use-fixtures :each db-fixure)
 ;; Caminho Feliz
+
 (deftest search-user-test
   (testing "Testando a função de buscar usuário"
     (testing "search-user"
-      (is (= (get(search-user "test"):agent) "test")))))
+      (is (= (get (search-user "test") :agent) "test")))))
 
 (deftest create-user-test
   (testing "Testando a função de criar usuário"
@@ -23,5 +29,3 @@
     (testing "search-user"
     (is (= (search-user {:fail "fail"}) "Unable to search for user")))))
 
-(if (= (get(search-user "test"):agent) "test")
-  "test user are created"(create-user "test" "a4Bh5kingcrimson"))

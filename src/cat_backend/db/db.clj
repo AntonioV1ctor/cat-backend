@@ -30,7 +30,7 @@
 (defn exclude-user [name]
   (try
     (j/execute! mysql-db
-              ["DELETE FROM Customers WHERE CustomerName='?'" name])
+              ["DELETE FROM users WHERE agent=?" name])
     (catch Exception e
     (str "Unable to remove user"))))
 
